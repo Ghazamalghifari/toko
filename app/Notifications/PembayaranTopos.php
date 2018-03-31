@@ -42,17 +42,7 @@ class PembayaranTopos extends Notification
     * @return \Illuminate\Notifications\Messages\MailMessage
     */
     public function toSlack($notifiable)
-    {
-        $pendaftar_topos = $this->pendaftar_topos;
-        $bank = Bank::select('nama_bank')->where('id',$pendaftar_topos->bank_id)->first();
-
-        $content = title_case($pendaftar_topos->name) ." telah mengkonfirmasi Pembayaran Sebesar Rp. " . number_format($pendaftar_topos->total , 0, ',', '.') . " Ke Rekening Bank " . $bank->nama_bank ." atas nama ".$pendaftar_topos->atas_nama;
-
-        $content .=  ". ";
-
-        return (new SlackMessage)
-        ->success()
-        ->content($content);
+    { 
     }
 
 /**

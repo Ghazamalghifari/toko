@@ -1,36 +1,13 @@
-<!DOCTYPE doctype html>
+<!doctype html>
 <html lang="en">
-<head>
-    <!-- PILIH TIPE APLIKASI -->
+<head> 
     <?php
     $session_id    = session()->getId();
-    $session = Session::get('session_id');
-    $setting_aplikasi = \App\SettingAplikasi::select('tipe_aplikasi')->first();
-
-    $foto_logo = \App\UserWarung::select()->where('tipe_user',4)->orderBy('id', 'asc')->limit(1)->first();
-
-    $settingFooter = \App\SettingFooter::select()->first();
-    $jasa_pengirimans = \App\SettingJasaPengiriman::select('logo_jasa')->where('tampil_jasa_pengiriman', 1)->get();
-    $bank_transfers = \App\SettingTransferBank::select('logo_bank')->where('tampil_bank', 1)->get();
+    $session = Session::get('session_id'); 
+  
     ?>
-    
-    @if($setting_aplikasi->tipe_aplikasi == 0)
-    <title>
-        War-Mart.id
-    </title>
-    @else
-    <title>
-        {{$settingFooter->judul_warung}}
-    </title>
-    @endif
-    <meta charset="utf-8"/>
-    @if(\App\SettingAplikasi::select('tipe_aplikasi')->first()->tipe_aplikasi == 0)
-    <link href="img/favicon.png" rel="apple-touch-icon" sizes="76x76"/>
-    <link href="img/favicon.png" rel="icon" type="image/png"/>
-    @else
-    <link href="img/icon_topos.png?v=1" rel="apple-touch-icon" sizes="76x76"/>
-    <link href="img/icon_topos.png?v=1" rel="icon" type="image/png"/>
-    @endif
+
+    <title>Thasya Busana</title> 
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
     <meta content="width=device-width" name="viewport"/>
@@ -53,326 +30,108 @@
     {!! app('seotools')->generate() !!}
 </link>
 </link>
-</head>
-<style type="text/css">
-    .navbar-nav .open .dropdown-menu{
-      color: grey;
-  }
-  .navbar .navbar-brand {
-    position: relative;
-    @if(Agent::isMobile())
-    height: 50px;
-    @else
-    height: 75px;
-    @endif
-    line-height: 0px;
-    color: inherit;
-    padding: 10px 15px;
-}
-body {
-    @if($setting_aplikasi->tipe_aplikasi == 1)
-    background-color: #2ac326;
-    color: #3C4858;
-    @endif
-}
-@keyframes spinner { 
-  to {transform: rotate(360deg);} 
-} 
-.spinner:before { 
-  content: ''; 
-  box-sizing: border-box; 
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  width: 20px; 
-  height: 20px; 
-  margin-top: -10px; 
-  margin-left: -10px; 
-  border-radius: 50%; 
-  border: 2px solid #ccc; 
-  border-top-color: #333; 
-  animation: spinner .6s linear infinite; 
-} 
-.selectizeLoading > .selectize-input, .selectizeLoading > .selectize-input > input
-{
-  cursor: wait !important;
-  font-style: italic;
-  background:
-  url('http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif')
-  no-repeat
-  center center;
-}
-.marginFrom{
-    margin-bottom: 1px;
-    margin-top: 1px;
-}
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: 0px;
-}
-.btn.btn-just-icon, .navbar .navbar-nav > li > a.btn.btn-just-icon {
-    font-size: 15px;
-    padding: 6px 5px;
-    line-height: 1em;
-}
-.footer-big .social-feed i {
-    font-size: 23.5px;
-    display: table-cell;
-    padding-right: 10px;
-}
-.img-jasa{
-    padding: 0px 2px 2px;
-}
+  <style type="text/css">
+
+    .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    padding: 1px;
+    }
+  </style>
+    <style>
+      #map {
+        height: 315px;
+        width: 560px;
+       }
+    .list-produk {
+
+        padding-left: 5px;
+        padding-right: 10px;
+
+    }
+    .card .card-image{
+
+        height: auto; /*this makes sure to maintain the aspect ratio*/
+        margin-top: 0px;
+    }
+    .card-pricing {
+        margin-bottom: 20px;
+    }
+    .tombolBeli {
+        padding: 10px 0px;
+        margin:0px;
+    }
+    .card-pricing .card-content {
+        padding: 10px !important;
+    }
 </style>
-<body class="ecommerce-page">
-    @if(Agent::isMobile())
-    <nav class="navbar navbar-default navbar-fixed-top " id="sectionsNav">
-        @else
-        <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
-            @endif
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" type="button">
-                        <span class="sr-only">
-                            Toggle navigation
-                        </span>
-                        <span class="icon-bar">
-                        </span>
-                        <span class="icon-bar">
-                        </span>
-                        <span class="icon-bar">
-                        </span>
-                    </button>
-                    @if($setting_aplikasi->tipe_aplikasi == 0)
-                    <a href="{{ url('/') }}">
-                        <img class="navbar-brand" src="{{asset('/assets/img/examples/warmart_logo.png')}}"/>
-                    </a>
-                    @else
-                    @if( $foto_logo->foto_ktp != null)
-                    <a href="{{ url('/') }}">
-                        <img class="navbar-brand" src="{{asset('/foto_ktp_user/'.$foto_logo->foto_ktp.'').'?v=1'}}"/>
-                    </a>
-                    @else
-                    <a href="{{ url('/') }}">
-                        <img class="navbar-brand" src="{{asset('/assets/img/examples/topos_logo.png'.'?v=3')}}"/>
-                    </a>
-                    @endif
-                    @endif
+</head>
 
-                    @if(Agent::isMobile() && !Auth::check())
-                    <a class="navbar-brand pull-right" href="{{ url('/login') }}">
-                        <i class="material-icons">
-                            account_circle
-                        </i> 
-                    </a>
-                    <a class="navbar-brand pull-right" href="{{ url('/keranjang-belanja') }}">
-                        <i class="material-icons">
-                            shopping_cart
-                        </i>
-                        <b style="font-size: 15px" id="jumlah-keranjang" data-jumlah="{{ $cek_belanjaan }}" data-session="">
-                            | {{ $cek_belanjaan }}
-                        </b>
-                    </a>
-                    @endif
-                    @if(Agent::isMobile() && Auth::check() && Auth::user()->tipe_user == 3)
-                    <a class="navbar-brand pull-right" href="{{ url('/keranjang-belanja') }}">
-                        <i class="material-icons">
-                            shopping_cart
-                        </i>
-                        <b style="font-size: 15px" id="jumlah-keranjang" data-jumlah="{{ $cek_belanjaan }}" data-session="">
-                            | {{ $cek_belanjaan }}
-                        </b>
-                    </a>
-                    @endif
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        @if(Auth::check())
-                        <li class="dropdown button-container ">
-                            <a class="dropdown-toggle btn btn-rose btn-round" data-toggle="dropdown" href="#">
-                                <i class="material-icons">
-                                    account_circle
-                                </i>
-                                {{ Auth::user()->name}}
-                                <b class="caret">
-                                </b>
-                            </a>
-                            <ul class="dropdown-menu dropdown-with-icons">
-                                @if(Auth::user()->tipe_user == 3)
-                                <li style="color:black">
-                                    <a href="{{ url('/ubah-profil-pelanggan') }}">
-                                        <i class="material-icons">
-                                            settings
-                                        </i>
-                                        Ubah Profil
-                                    </a>
-                                </li>
-                                <li style="color:black">
-                                    <a href="{{ url('/ubah-password-pelanggan') }}">
-                                        <i class="material-icons">
-                                            lock_outline
-                                        </i>
-                                        Ubah Password
-                                    </a>
-                                </li>
-                                @endif
-                                <li>
-                                    <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="material-icons">
-                                            reply_all
-                                        </i>
-                                        Logout
-                                    </a>
-                                    <form action="{{ url('/logout') }}" id="logout-form" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                        @if(Auth::user()->tipe_user == 3)
-                        <li class="button-container">
-                            <a href="{{ url('/pesanan') }}">
-                                <i class="material-icons">
-                                    archive
-                                </i>
-                                Pesanan
-                            </a>
-                        </li>
-                        @endif
-                        @endif
-                        @if(Auth::check() && (Auth::user()->tipe_user == 4 OR Auth::user()->tipe_user == 1 ))
-                        <li>
-                            <a href="{{ url('/dashboard')}}">
-                                <i class="material-icons">
-                                    dashboard
-                                </i>
-                                dashboard
-                            </a>
-                        </li>
-                        @endif
-                        <li>
-                            @if($setting_aplikasi->tipe_aplikasi == 0)
-                            <a href="https://info.war-mart.id">
-                                <i class="material-icons">
-                                    info
-                                </i>
-                                SUPPORT Warmart
-                            </a>
-                            @else
-                            @if(Auth::check())                            
-                            <a href="{{ url('/cara-memesan')}}" target='blank'>
-                                <i class="material-icons">
-                                    info
-                                </i>
-                                CARA MEMESAN
-                            </a>
-                            @else
-                            <a href="{{ url('/cara-pemesanan')}}" target='blank'>
-                                <i class="material-icons">
-                                    info
-                                </i>
-                                CARA MEMESAN
-                            </a>
-                            @endif
-                            @endif
-                        </li>
-                        <li>
-                            @if($setting_aplikasi->tipe_aplikasi == 0)
-                            <a href="{{ url('/tentang-warmart')}}">
-                                <i class="material-icons">
-                                    info
-                                </i>
-                                Tentang Warmart
-                            </a>
-                            @else
-                            <a href="<?=$settingFooter->about_link;?>">
-                                <i class="material-icons">
-                                    info
-                                </i>
-                                Tentang TOPOS
-                            </a>
-                            @endif
-                        </li>
 
-                        @if(!Auth::check())
-                        <li class="button-container">
-                            <a class="btn btn-rose btn-round" href="{{ url('/login')}}">
-                                <i class="material-icons">
-                                    account_circle
-                                </i>
-                                Masuk
-                            </a>
-                        </li>
-                        @endif
-                        @if (Auth::check() == false) 
-                        <li class="button-container">
-                            <a class="btn btn-round btn-rose" href="{{ url('/keranjang-belanja') }}">
-                                <i class="material-icons">
-                                    shopping_cart
-                                </i>
-                                Keranjang Belanja
-                                <b style="font-size: 15px" id="jumlah-keranjang" data-session="">
-                                    | {{ $cek_belanjaan }}
-                                </b>
-                            </a>
-                        </li>
-                        @elseif(Auth::check() && Auth::user()->tipe_user == 3)
-                        <li class="button-container">
-                            <a class="btn btn-round btn-rose" href="{{ url('/keranjang-belanja') }}">
-                                <i class="material-icons">
-                                    shopping_cart
-                                </i>
-                                Keranjang Belanja
-                                <b style="font-size: 15px" id="jumlah-keranjang" data-session="">
-                                    | {{ $cek_belanjaan }}
-                                </b>
-                            </a>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
+<body class="blog-posts">
+
+    <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('/') }}">Thasya Busana</a>
             </div>
-        </nav>
-        @yield('content')
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ url('/login') }}">
+                            <i class="material-icons">fingerprint</i> Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/register') }}">
+                            <i class="material-icons">person_add</i> Register
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+ 
+                    @yield('content') 
+    </div>
+
         <footer class="footer footer-black footer-big" style="bottom: 0;">
             <div class="container">
                 <div class="content">
                     <div class="row">
-                        <div class="col-md-3">
-                            <h5 style="font-size: 14px; mar">
-                                Tentang Kami
-                            </h5>
-                            @if($setting_aplikasi->tipe_aplikasi == 0)
-                            <p>
-                                Warmart adalah marketplace warung muslim pertama di Indonesia. Kami menghubungkan usaha-usaha muslim dengan pelanggan seluruh Umat Islam di Indonesia. Jenis usaha yang dapat bergabung dengan Warmart diantaranya: Warung, Toko, Minimarket, Pedagang Kaki Lima, Bengkel, Rumah Makan, Klinik, Home Industri, Peternakan, Pertanian, Perikanan, Kerajinan, Fashion dan usaha lainya.
-                            </p>
-                            @else
-                            <p>
-                                <?=$settingFooter->
-                                about_us;?>
-                            </p>
-                            @endif
+                        <div class="col-md-6">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9T-H8Hc8jLs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
-                        <div class="col-md-3">
-                            <h5 style="font-size: 14px; mar">
+                        <div class="col-md-6">
+
+                                  <div id="map"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 style="font-size: 15px;">
+                                Tentang Kami
+                            </h5> 
+                            <p>
+                                Thasya busana adalah usaha yang bergerak di bidang fashion. <br>
+                                Yang mana kami lebih fokus dengan baju etnik syar'i, <br>
+                                seperti contoh etnik lampung (baju tapis,baju tenun dan sulam usus). <br>
+                                kami juga menerima pesenan baju etnik dari daerah lain sesuai custom.
+                            </p> 
+                        </div>
+                        <div class="col-md-6">
+                            <h5 style="font-size: 15px; mar">
                                 Hubungi Kami
                             </h5>
                             <div class="social-feed">
-                                <div class="feed-line">
-                                    <i class="fa fa-phone-square fa-5x">
-                                    </i>
-                                    <p>
-                                        <?=$settingFooter->
-                                        no_telp;?>
-                                    </p>
-                                </div>
-                                <div class="feed-line">
-                                    <i class="fa fa-home fa-5x"> </i>
-                                    <p>
-                                        <?=$settingFooter->
-                                        alamat;?>
-                                    </p>
-                                </div>
                                 <div class="feed-line">
                                     <i class="fa fa-envelope fa-5x">
                                     </i>
@@ -382,148 +141,57 @@ body {
                                     </p>
                                 </div>
                                 <div class="feed-line">
+                                    <a href="https://www.facebook.com/thasya.busana" target="_blank">
+                                        <i class="fa fa-facebook-square fa-5x">
+                                        </i>
+                                        <p>
+                                           Thasya Busana
+                                        </p>
+                                    </a>
+                                </div> 
+                                <div class="feed-line">
+                                    <a href="https://www.instagram.com/thasya_busana/" target="_blank">
+                                    <i class="fa fa-instagram fa-5x">
+                                    </i>
+                                    <p>
+                                       Thasya_busana
+                                    </p>
+                                    </a>
+                                </div>  
+                                <div class="feed-line">
+                                    <a href="https://api.whatsapp.com/send?phone=6281369704950&text=Halo,Permisi%20Saya%20mau%20order....." target="_blank">
                                     <i class="fa fa-whatsapp fa-5x">
                                     </i>
                                     <p>
-                                        <?=$settingFooter->
-                                        whatsapp;?>
+                                        +6281369704950
                                     </p>
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            @if(Agent::isMobile())
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h5 style="font-size: 14px; mar">
-                                        Ikuti Kami Di
-                                    </h5>
-                                    <button class="btn btn-just-icon btn-xs btn-facebook" style="margin : 0px">
-                                        <a href="<?=$settingFooter->facebook;?>">
-                                            <i class="fa fa-facebook"> </i>
-                                        </a> 
-                                    </button>
-                                    <button class="btn btn-just-icon btn-xs btn-twitter" style="margin : 0 0 0 5px">
-                                        <a href="<?=$settingFooter->twitter;?>">
-                                            <i class="fa fa-twitter"> </i>
-                                        </a> 
-                                    </button>
-                                    <button class="btn btn-just-icon btn-xs btn-instagram" style="margin : 0 0 0 5px">
-                                        <a href="<?=$settingFooter->instagram;?>">
-                                            <i class="fa fa-instagram"> </i>
-                                        </a> 
-                                    </button>
-                                    <button class="btn btn-just-icon btn-xs btn-google" style="margin : 0 0 0 5px">
-                                        <a href="<?=$settingFooter->google_plus;?>" style="background-color: #d41700">
-                                            <i class="fa fa-google-plus"> </i>
-                                        </a> 
-                                    </button>
-                                </div>
-
-                                <div class="col-xs-6">
-                                    <h5 style="font-size: 14px; mar">
-                                        Download Apps
-                                    </h5>
-                                    <a href="<?=$settingFooter->play_store;?>">
-                                        <img src="{{asset('image/gplaystore.png')}}">
-                                    </a>  
-                                </div>
-                            </div>
-
-                            @else
-
-                            <h5 style="font-size: 14px; mar">
-                                Ikuti Kami Di
-                            </h5>
-                            <button class="btn btn-just-icon btn-xs btn-facebook" style="margin : 0px">
-                                <a href="<?=$settingFooter->facebook;?>">
-                                    <i class="fa fa-facebook"> </i>
-                                </a> 
-                            </button>
-                            <button class="btn btn-just-icon btn-xs btn-twitter" style="margin : 0 0 0 5px">
-                                <a href="<?=$settingFooter->twitter;?>">
-                                    <i class="fa fa-twitter"> </i>
-                                </a> 
-                            </button>
-                            <button class="btn btn-just-icon btn-xs btn-instagram" style="margin : 0 0 0 5px">
-                                <a href="<?=$settingFooter->instagram;?>">
-                                    <i class="fa fa-instagram"> </i>
-                                </a> 
-                            </button>
-                            <button class="btn btn-just-icon btn-xs btn-google" style="margin : 0 0 0 5px">
-                                <a href="<?=$settingFooter->google_plus;?>" style="background-color: #d41700">
-                                    <i class="fa fa-google-plus"> </i>
-                                </a> 
-                            </button>
-                            <h5 style="font-size: 14px; mar">
-                                Download Apps
-                            </h5>
-                            <a href="<?=$settingFooter->play_store;?>">
-                                <img src="{{asset('image/gplaystore.png')}}" style="max-width: 50%">
-                            </a>  
-                            @endif                                               
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row" style="padding-left: 15px">
-                                <div class="col-md-12 col-xs-12" style="padding-left: 0px">
-                                    <h5 style="font-size: 14px;" class="pull-left">
-                                        Jasa Pengiriman
-                                    </h5>
-                                </div>
-                                @foreach($jasa_pengirimans as $jasa_pengiriman)
-                                @if(Agent::isMobile())
-                                <img src="{{asset('jasa_pengiriman/'.$jasa_pengiriman->logo_jasa)}}" style="max-width: 50px" class="pull-left img-jasa">
-                                @else
-                                <img src="{{asset('jasa_pengiriman/'.$jasa_pengiriman->logo_jasa)}}" style="max-width: 65px" class="pull-left img-jasa">
-                                @endif
-                                @endforeach
-
-                                <div class="col-md-12 col-xs-12" style="padding-left: 0px">
-                                    <h5 style="font-size: 14px;" class="pull-left">
-                                        Metode Pembayaran
-                                    </h5>
-                                </div>
-                                @foreach($bank_transfers as $bank_transfer)
-                                @if(Agent::isMobile())
-                                <img src="{{asset('jasa_pengiriman/'.$bank_transfer->logo_bank)}}" style="max-width: 50px" class="pull-left img-jasa">
-                                @else
-                                <img src="{{asset('jasa_pengiriman/'.$bank_transfer->logo_bank)}}" style="max-width: 65px" class="pull-left img-jasa">
-                                @endif
-                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="row">
-                    <hr style="margin: 5px" />
 
-                    <div class="copyright pull-right">
-                        Copyright ©
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script>
-                        <a href="https://andaglos.id/">
-                            PT. Andaglos Global Teknologi.
-                        </a>
-                    </div>
-                </div>
             </footer>
-            <!--Start of Tawk.to Script-->
-            <script type="text/javascript">
-                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-                (function(){
-                    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                    s1.async=true;
-                    s1.src='https://embed.tawk.to/5a051374bb0c3f433d4c84cd/default';
-                    s1.charset='UTF-8';
-                    s1.setAttribute('crossorigin','*');
-                    s0.parentNode.insertBefore(s1,s0);
-                })();
-            </script>
-            <!--End of Tawk.to Script-->
-        </nav>
-    </body>
+
+
+    <script>
+      function initMap() {
+        var uluru = {lat: -5.3791173, lng: 105.2412983};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUfTCdFiOgiKp6LSPAVfIZL1r3NE-dJ2Y&callback=initMap">
+    </script>@yield('scripts')
+
     <!-- Include Dexie -->
     <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
 
@@ -622,7 +290,7 @@ body {
             onOpen: () => {
               swal.showLoading()
           }
-      }); 
+      });
      }
 
 

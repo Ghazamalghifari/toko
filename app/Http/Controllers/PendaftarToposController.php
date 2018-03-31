@@ -243,8 +243,6 @@ class PendaftarToposController extends Controller
 
         // arahkan ke methode smsPendaftaran()
         $this->smsPendaftaran($pendaftar_topos);
-        // Notification slack
-        Notification::send(PendaftarTopos::first(), new PendaftaranTopos($pendaftar_topos));
 
         return response(200);
     }
@@ -390,9 +388,6 @@ class PendaftarToposController extends Controller
 
             // arahkan ke methode smsPendaftaran()
             $this->smsPendaftaran($pendaftar_topos);
-
-            // kirim Notification ke Slack
-            Notification::send(PendaftarTopos::first(), new PendaftaranTopos($pendaftar_topos));
         } else {
 
             // PENDAFTARAN WARUNG
@@ -431,9 +426,6 @@ class PendaftarToposController extends Controller
 
             // arahkan ke methode smsPendaftaran()
             $this->smsPendaftaran($pendaftar_topos);
-
-            // kirim Notification ke Slack
-            Notification::send(PendaftarTopos::first(), new PendaftaranTopos($pendaftar_topos));
         }
 
         return redirect('/kirim-bukti-pembayaran/' . $pendaftar_topos->id);

@@ -17,12 +17,8 @@ $judul_warung = \App\SettingFooter::select()->first()->judul_warung;
     @endif
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    
-    @if($setting_aplikasi->tipe_aplikasi == 0)
-    <title>War-Mart.id</title>
-    @else
-    <title>{{$judul_warung}}</title>
-    @endif
+     
+    <title>Thasya Busana</title> 
 
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->

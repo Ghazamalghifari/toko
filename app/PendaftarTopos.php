@@ -21,8 +21,5 @@ class PendaftarTopos extends Model
 		return $this->belongsTo('App\UserWarung', 'warung_id', 'id_warung');
 	}
 
-	           // Specify Slack Webhook URL to route notifications to 
-	public function routeNotificationForSlack() {
-		return 'https://hooks.slack.com/services/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';
-	}
+	   
 }

@@ -142,7 +142,7 @@ class HalamanWarungController extends Controller
         //MENAMPILKAN KATEGORI
         $kategori_produk = HalamanWarungController::produkKategori($kategori, $request->id_warung);
 
-        $nama_kategori = 'Hasil Pencarian : "' . $request->search . '" <a href="' . url("/halaman-warung/" . $request->id_warung) . '"> <i class="material-icons" style="color:red" >highlight_off</i> </a>';
+        $nama_kategori = 'Hasil Pencarian Produk : "' . $request->search . '" <a href="' . url("/halaman-warung/" . $request->id_warung) . '"> <i class="material-icons" style="color:red" >highlight_off</i> </a>';
 
         //TAMPIL NAMA WARUNG
         $data_warung = Warung::select(['name', 'id'])->where('id', $request->id_warung)->first();

@@ -411,13 +411,13 @@ $judul_warung = \App\SettingFooter::select()->first()->judul_warung;
                 <span id="sisa_waktu_demo" style="margin-left: 10px"></span>
 
                 <span>                    
-                    <a  href="{{ url('/halaman-warung/'.Auth::user()->id_warung.'') }}" class="btn btn-xs btn-rose" style="margin-left: 10px">Preview Online Shop</a>
+                    <a  href="{{ url('/') }}" class="btn btn-xs btn-rose" style="margin-left: 10px">Preview Online Shop</a>
                     @endif
                 </span>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <a href="{{ url('/halaman-warung/'.Auth::user()->id_warung.'') }}" class="btn btn-round btn-rose">Preview Online Shop</a>
+                    <a href="{{ url('/') }}" class="btn btn-round btn-rose">Preview Online Shop</a>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <button id="btnHelp" class="btn btn-round btn-info" data-toggle="modal" data-target="#modalTour">
@@ -451,8 +451,8 @@ $judul_warung = \App\SettingFooter::select()->first()->judul_warung;
                 <script type="text/javascript">
                     document.write(new Date().getFullYear())
                 </script>
-                <a href="https://andaglos.id">
-                    PT Andaglos Global Teknologi
+                <a href="https://ghazamalghifari.com">
+                    Ghaza M. Al-Ghifari
                 </a>
             </p>
         </div>

@@ -43,9 +43,7 @@ class PendaftarWarung extends Notification
     public function toSlack($notifiable)
     {
         $user = $this->user;
-        $content = title_case($user->name) ." mendaftar sebagai warung dengan nomor telp " .$user->no_telp ." di alamat : ". $user->alamat;
-        $url_warung = url('/dashboard#/edit-user-warung/'.$user->id);
-        $content .=  ". ".$url_warung;
+        $content = "";
 
         return (new SlackMessage)
         ->success()

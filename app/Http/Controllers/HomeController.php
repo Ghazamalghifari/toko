@@ -43,14 +43,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        SEOMeta::setTitle('War-Mart.id');
-        SEOMeta::setDescription('Warmart marketplace warung muslim pertama di Indonesia');
-        SEOMeta::setCanonical('https://war-mart.id');
-        SEOMeta::addKeyword(['warmart', 'warung', 'marketplace', 'toko online', 'belanja', 'lazada']);
+        SEOMeta::setTitle('thasyabusana.com');
+        SEOMeta::setDescription('Tasya Busana Adalah');
+        SEOMeta::setCanonical('https://thasyabusana.com');
+        SEOMeta::addKeyword(['gamis', 'busana', 'baju','fashion', 'toko online', 'belanja', 'lazada']);
 
-        OpenGraph::setDescription('Warmart marketplace warung muslim pertama di Indonesia');
-        OpenGraph::setTitle('War-Mart.id');
-        OpenGraph::setUrl('https://war-mart.id');
+        OpenGraph::setDescription('Tasya Busana Adalah');
+        OpenGraph::setTitle('thasyabusana.com');
+        OpenGraph::setUrl('https://thasyabusana.com');
         OpenGraph::addProperty('type', 'articles');
 
         //MENAMPILKAN PRODUK ACAK
@@ -116,14 +116,14 @@ class HomeController extends Controller
 
     public function index_home()
     {
-        SEOMeta::setTitle('War-Mart.id');
-        SEOMeta::setDescription('Warmart marketplace warung muslim pertama di Indonesia');
-        SEOMeta::setCanonical('https://war-mart.id');
-        SEOMeta::addKeyword(['warmart', 'warung', 'marketplace', 'toko online', 'belanja', 'lazada']);
+        SEOMeta::setTitle('thasyabusana.com');
+        SEOMeta::setDescription('Tasya Busana Adalah');
+        SEOMeta::setCanonical('https://thasyabusana.com');
+        SEOMeta::addKeyword(['gamis', 'busana', 'baju','fashion', 'toko online', 'belanja', 'lazada']);
 
-        OpenGraph::setDescription('Warmart marketplace warung muslim pertama di Indonesia');
-        OpenGraph::setTitle('War-Mart.id');
-        OpenGraph::setUrl('https://war-mart.id');
+        OpenGraph::setDescription('Tasya Busana Adalah');
+        OpenGraph::setTitle('thasyabusana.com');
+        OpenGraph::setUrl('https://thasyabusana.com');
         OpenGraph::addProperty('type', 'articles');
 
         //MENAMPILKAN PRODUK ACAK
