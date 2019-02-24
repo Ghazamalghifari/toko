@@ -338,8 +338,7 @@ class BarangController extends Controller
         } else {
 
             //validate
-            $this->validate($request, [
-                'kode_barcode'       => 'nullable|max:50|unique:barangs,kode_barcode,' . $request->id . ',id,id_warung,' . Auth::user()->id_warung,
+            $this->validate($request, [ 
                 'kode_barang'        => 'required|max:50|unique:barangs,kode_barang,' . $request->id . ',id,id_warung,' . Auth::user()->id_warung,
                 'nama_barang'        => 'required|max:300',
                 'harga_beli'         => 'required|numeric|digits_between:1,11',
