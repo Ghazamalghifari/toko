@@ -44,9 +44,12 @@ class HomeController extends Controller
     public function index()
     {
         SEOMeta::setTitle('thasyabusana.com');
-        SEOMeta::setDescription('Tasya Busana Adalah');
+        SEOMeta::setDescription('Thasya busana adalah usaha yang bergerak di bidang fashion. 
+                                Yang mana kami lebih fokus dengan nuansa Tapis, 
+                                seperti contoh (baju tapis, baju tenun,jilbab tapis,sarung tapis,peci tapis,kemeja tapis,sepatu/sendal tapis, dompet tapis,tas tapis, topi tapis dan juga souvenir/oleh oleh kerajinan khas lampung). 
+                                kami juga menerima pesanan, baik satuan maupun dengan jumlah yang banyak.');
         SEOMeta::setCanonical('https://thasyabusana.com');
-        SEOMeta::addKeyword(['gamis', 'busana', 'baju','fashion', 'toko online', 'belanja', 'lazada']);
+        SEOMeta::addKeyword(['baju tapis', 'baju tenun', 'jilbab tapis','sarung tapis', 'peci tapis', 'kemeja tapis', 'sepatu tapis','sendal tapis','dompet tapis','tas tapis','topis tapis','souvenir lampung','souvenir khas lampung','kerajinan lampung','oleh oleh lampung','thasya busana','lampung','bandar lampung']);
 
         OpenGraph::setDescription('Tasya Busana Adalah');
         OpenGraph::setTitle('thasyabusana.com');
@@ -116,10 +119,14 @@ class HomeController extends Controller
 
     public function index_home()
     {
+
         SEOMeta::setTitle('thasyabusana.com');
-        SEOMeta::setDescription('Tasya Busana Adalah');
+        SEOMeta::setDescription('Thasya busana adalah usaha yang bergerak di bidang fashion. 
+                                Yang mana kami lebih fokus dengan nuansa Tapis, 
+                                seperti contoh (baju tapis, baju tenun,jilbab tapis,sarung tapis,peci tapis,kemeja tapis,sepatu/sendal tapis, dompet tapis,tas tapis, topi tapis dan juga souvenir/oleh oleh kerajinan khas lampung). 
+                                kami juga menerima pesanan, baik satuan maupun dengan jumlah yang banyak.');
         SEOMeta::setCanonical('https://thasyabusana.com');
-        SEOMeta::addKeyword(['gamis', 'busana', 'baju','fashion', 'toko online', 'belanja', 'lazada']);
+        SEOMeta::addKeyword(['baju tapis', 'baju tenun', 'jilbab tapis','sarung tapis', 'peci tapis', 'kemeja tapis', 'sepatu tapis','sendal tapis','dompet tapis','tas tapis','topis tapis','souvenir lampung','souvenir khas lampung','kerajinan lampung','oleh oleh lampung','thasya busana','lampung','bandar lampung']);
 
         OpenGraph::setDescription('Tasya Busana Adalah');
         OpenGraph::setTitle('thasyabusana.com');

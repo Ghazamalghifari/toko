@@ -8,6 +8,8 @@
     ?>
 
     <title>Thasya Busana</title> 
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/image/favicon.png')}}" />
+    <link rel="icon" type="image/png" href="{{asset('/image/favicon.png')}}" /> 
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
     <meta content="width=device-width" name="viewport"/>
