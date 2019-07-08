@@ -53,67 +53,32 @@ $judul_warung = \App\SettingFooter::select()->first()->judul_warung;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                @if($setting_aplikasi->tipe_aplikasi == 0)
-                <a href="{{ url('/') }}">
-                    <img class="navbar-brand" src="{{asset('/assets/img/examples/warmart_logo.png')}}"/>
-                </a>
-                @else
-                @if( $foto_logo->foto_ktp != null)
-                <a href="{{ url('/') }}">
-                    <img class="navbar-brand" src="{{asset('/foto_ktp_user/'.$foto_logo->foto_ktp.'').'?v=1'}}"/>
-                </a>
-                @else
-                <a href="{{ url('/') }}">
-                    <img class="navbar-brand" src="{{asset('/assets/img/examples/topos_logo.png'.'?v=3')}}"/>
-                </a>
-                @endif
-                @endif
+                </button> 
+               
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img class="navbar-brand" src="{{asset('/image/favicon.png')}}"/></a>
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right"> 
-                    <li>
-                        <a data-toggle="collapse" href="#pagesExamples">
-                            <p>
-                                <i class="material-icons">person_add</i> Registrasi
-                                <b class="caret"></b>
-                            </p>
-                        </a>
-                        <div class="collapse" id="pagesExamples">
-                            <ul class="nav">
-                                <li class="">
-                                    <a href="{{ url('/register-customer') }}">
-                                        <i class="material-icons">person_add</i> Pelanggan
-                                    </a>
-                                </li>
-                                @if($setting_aplikasi->tipe_aplikasi == 0)
-                                <li class="">
-                                    <a href="{{ url('/register') }}">
-                                        <i class="material-icons">people</i> Komunitas
-                                    </a>
-                                </li> 
-                                <li class="">
-                                    <a href="{{ url('/register-warung') }}">
-                                        <i class="material-icons">store</i> Warung
-                                    </a>
-                                </li> 
-                                @endif
-                            </ul>
-                        </div>
-                    </li>
+                <ul class="nav navbar-nav navbar-right">  
 
-                    <li class=" active ">
+                    <li class="">
                         <a href="{{ url('/login') }}">
                             <i class="material-icons">fingerprint</i> Login
                         </a>
                     </li>
                     
+                    <li class="">
+                        <a href="{{ url('/register-customer') }}">
+                            <i class="material-icons">person_add</i> Registrasi
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
     <div class="wrapper wrapper-full-page">
-        <div class="full-page login-page" filter-color="black" data-image="{{ asset('img/login_bg.jpg') }}">
+        <div class="full-page login-page" filter-color="black" data-image="{{ asset('image/logo.jpg') }}">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
             <div class="content">
                 <div class="container">
@@ -128,14 +93,7 @@ $judul_warung = \App\SettingFooter::select()->first()->judul_warung;
              </div>
          </div>
          <footer class="footer">
-            <div class="container">
-                <p class="copyright pull-right">
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>
-                    <a href="https://andaglos.id"> PT Andaglos Global Teknologi</a>
-                </p>
+            <div class="container"> 
             </div>
         </footer>
     </div>

@@ -29,7 +29,7 @@ $setting_aplikasi = \App\SettingAplikasi::select('tipe_aplikasi')->first();
 <form action="{{ url('/login') }}" method="POST">
     {{ csrf_field() }}
     <div class="card card-login ">
-        <div class="card-header text-center" data-background-color="blue">
+        <div class="card-header text-center" data-background-color="orange" >
             <h4 class="card-title">
                 Login
             </h4>
@@ -99,6 +99,8 @@ $setting_aplikasi = \App\SettingAplikasi::select('tipe_aplikasi')->first();
             '<li class="" style="list-style-type:none"><a href="{{ url('/register-customer') }}"  class="btn btn-info"><i class="material-icons">person_add</i> Pelanggan</a></li><li class="" style="list-style-type:none"><a href="{{ url('/register') }}"  class="btn btn-success"><i class="material-icons">people</i> Komunitas</a></li><li class=""  style="list-style-type:none"><a href="{{ url('/register-warung') }}"  class="btn btn-warning"><i class="material-icons">store</i> Warung</a></li> ',
             showConfirmButton :  false,
         });
+
     });
+
 </script>
 @endsection

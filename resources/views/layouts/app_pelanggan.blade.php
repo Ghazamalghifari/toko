@@ -78,7 +78,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">Thasya Busana</a>
+                    <img class="navbar-brand" src="{{asset('/image/favicon.png')}}"/>
+                <a class="navbar-brand" href="{{ url('/') }}"><b>Thasya Busana</b></a>
             </div>
 
             <div class="collapse navbar-collapse">
@@ -104,17 +105,7 @@
 
         <footer class="footer footer-black footer-big" style="bottom: 0;">
             <div class="container">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-6">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9T-H8Hc8jLs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        </div>
-                        <div class="col-md-6">
-
-                                  <div id="map"></div>
-                        </div>
-                    </div>
-
+                <div class="content"> 
                     <div class="row">
                         <div class="col-md-6">
                             <h5 style="font-size: 15px;">
@@ -132,13 +123,14 @@
                                 Hubungi Kami
                             </h5>
                             <div class="social-feed">
-                                <div class="feed-line">
-                                    <i class="fa fa-envelope fa-5x">
-                                    </i>
-                                    <p>
-                                        <?=$settingFooter->
-                                        email;?>
-                                    </p>
+                                <div class="feed-line"> 
+                                    <a href="mailto:thasyabusana.bisnis@gmail.com" target="_blank">
+                                        <i class="fa fa-envelope fa-5x">
+                                        </i>
+                                        <p>
+                                           Thasyabusana.bisnis@gmail.com
+                                        </p>
+                                    </a>
                                 </div>
                                 <div class="feed-line">
                                     <a href="https://www.facebook.com/thasya.busana" target="_blank">

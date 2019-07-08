@@ -20,7 +20,7 @@
 {!! Form::open(['url' => url('/register'),'method' => 'post', 'class'=>'form-horizontal']) !!}
 {{ csrf_field() }}
 <div class="card card-login ">
-    <div class="card-header text-center" data-background-color="blue">
+    <div class="card-header text-center" data-background-color="orange">
         <h4 class="card-title">
             Registrasi Pelanggan
         </h4>
@@ -151,22 +151,13 @@
                                 <input data_toogle="0" id="ceklis_syarat" name="ceklis_syarat" type="checkbox" value="0">
                             </input>
                         </label>
-                        <b>
-                         @if(\App\SettingAplikasi::select('tipe_aplikasi')->first()->tipe_aplikasi == 0)
+                        <b style="font-size: 95%"> 
                             * Anda memahami & menyetujui
-                                                <a href="{{ url('/syarat-ketentuan') }}" target="_blank">
+                                                <a href="#" target="_blank">
                                                     <u>
                                                         Syarat & Ketentuan
                                                     </u>
-                                                </a>
-                            @else
-                            * Anda memahami & menyetujui
-                                                <a href="{{ url('/syarat-ketentuan-topos') }}" target="_blank">
-                                                    <u>
-                                                        Syarat & Ketentuan
-                                                    </u>
-                                                </a>
-                            @endif
+                                                </a> 
                         </b>
                     </div>
                 </div>

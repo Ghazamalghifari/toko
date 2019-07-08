@@ -20,7 +20,7 @@
 <form action="{{ url('/register') }}" method="POST">
     {{ csrf_field() }}
     <div class="card card-login ">
-        <div class="card-header text-center" data-background-color="blue">
+        <div class="card-header text-center" data-background-color="orange">
             <h4 class="card-title">
                 Registrasi Komunitas
             </h4>
